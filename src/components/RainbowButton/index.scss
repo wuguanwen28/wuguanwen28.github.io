@@ -1,0 +1,98 @@
+.rainbow-button {
+  --color-1: hsl(0 100% 63%);
+  --color-2: hsl(270 100% 63%);
+  --color-3: hsl(210 100% 63%);
+  --color-4: hsl(195 100% 63%);
+  --color-5: hsl(90 100% 63%);
+  --speed: 2s;
+
+  position: relative;
+  display: inline-flex;
+  height: 2.75rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: calc(0.08 * 1rem) solid transparent;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  color: #fff;
+  background:
+    linear-gradient(#111, #111),
+    linear-gradient(#111 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)),
+    linear-gradient(
+      90deg,
+      var(--color-1),
+      var(--color-5),
+      var(--color-3),
+      var(--color-4),
+      var(--color-2)
+    );
+
+  background-size: 200%;
+  background-clip: padding-box, border-box, border-box;
+  background-origin: border-box;
+
+  animation: rainbow var(--speed) infinite linear;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    z-index: 0;
+    height: 20%;
+    width: 60%;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      var(--color-1),
+      var(--color-5),
+      var(--color-3),
+      var(--color-4),
+      var(--color-2)
+    );
+    background-size: 200%;
+    filter: blur(calc(0.8 * 1rem));
+    animation: rainbow var(--speed) infinite linear;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .rainbow-button {
+    background:
+      linear-gradient(#fff, #fff),
+      linear-gradient(#fff 50%, rgba(255, 255, 255, 0.6) 80%, rgba(0, 0, 0, 0)),
+      linear-gradient(
+        90deg,
+        var(--color-1),
+        var(--color-5),
+        var(--color-3),
+        var(--color-4),
+        var(--color-2)
+      );
+  }
+}

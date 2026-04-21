@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react'
+import Home from './views/Home'
 
-type AppProps = {};
+export const App: React.FC = () => {
+  return <Home></Home>
+}
 
-export const App: React.FC<AppProps> = () => {
-  return <div>App</div>;
-};
-
-export default App;
+export default App
