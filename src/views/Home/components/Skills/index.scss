@@ -1,0 +1,67 @@
+.skills {
+  padding: clamp(4rem, 5vh, 8rem) clamp(1rem, 3vw, 2rem);
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .section-title {
+    width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .skills-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .center-element {
+      width: 280px;
+      height: 280px;
+      margin: auto;
+      position: relative;
+      z-index: 10;
+      border-radius: 50%;
+      background-color: var(--background);
+
+      .icon-cloud-container {
+        width: 280px;
+        height: 280px;
+        padding: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .skill-item {
+      position: relative;
+      z-index: 10;
+      margin: 24px 0;
+      width: 120px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
+}
