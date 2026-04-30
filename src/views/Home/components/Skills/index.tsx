@@ -5,30 +5,12 @@ import { AnimatedBeam } from '@/components/AnimatedBeam'
 import { ElectricBorder } from '@/components/ElectricBorder'
 import { ShimmerButton } from '@/components/ShimmerButton'
 
-const slugs = [
-  'typescript',
-  'javascript',
-  'vuedotjs',
-  'vite',
-  'webpack',
-  'vueuse',
-  'react',
-  'flutter',
-  'html5',
-  'css',
-  'nestjs',
-  'nodedotjs',
-  'mysql',
-  'mongodb',
-  'nginx',
-  'docker',
-  'git',
-  { name: 'nextdotjs', color: 'fff' },
-  { name: 'threedotjs', color: 'fff' },
-].map((item) => {
-  if (typeof item === 'string') item = { name: item, color: item }
-  const { name, color } = item
-  return `https://cdn.simpleicons.org/${name}/${color}`
+const svgModules = import.meta.glob('/src/assets/icons/*.svg', {
+  eager: true,
+})
+
+const images = Object.values(svgModules).map((item: any) => {
+  return typeof item === 'string' ? item : item?.default
 })
 
 const leftSkills = [
@@ -110,7 +92,7 @@ export const Skills: React.FC = () => {
         <div className="center-element" ref={skillTextRef}>
           <ElectricBorder borderRadius={999} chaos={0.15} color={colors}>
             <div className="icon-cloud-container">
-              <IconCloud images={slugs} />
+              <IconCloud images={images} />
             </div>
           </ElectricBorder>
         </div>
